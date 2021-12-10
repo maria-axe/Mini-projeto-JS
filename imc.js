@@ -6,32 +6,34 @@ function imc ()
     const altura = document.getElementById('altura').value;
     const peso = document.getElementById('peso').value;
 
-    calcular(nome,altura, peso)
     validacao(nome, altura, peso)
     
-
+    
 }
 
-function validacao(nome, altura, peso)
+function validacao(nome,altura, peso)
 {
-    if (nome == '' && altura == '' && peso == '') 
+    console.log(nome.length, altura.length, peso.length);
+    if(nome.length  && altura.length  && peso.length) 
     { 
-        resultado.textContent = 'Preencha todos os campos!';
+        calcular(nome,altura, peso)
+    }else{
+        
+        resultado.innerHTML =  `<div class="resultado2">Preencha todos os campos!</div> `;
         return;
     }
     
 }
 
-function calcular(nome, altura, peso) 
+function calcular(nome, altura, peso)
 {
-    validacao(nome, altura, peso);
     let classificacao = '';
     const valorIMC = (peso / (altura * altura)).toFixed(1);
 
         if (valorIMC < 18.5){
             classificacao = 'abaixo do peso.';
         }else if (valorIMC < 25) {
-            classificacao = 'com peso ideal. Parabéns!!!';
+            classificacao = 'com peso ideal. Parabéns!!';
         }else if (valorIMC < 30){
             classificacao = 'levemente acima do peso.';
         }else if (valorIMC < 35){
@@ -39,11 +41,11 @@ function calcular(nome, altura, peso)
         }else if (valorIMC < 40){
             classificacao = 'com obesidade grau II';
         }else {
-            classificacao = 'com obesidade grau III. Cuidado!!';
+            classificacao = 'com obesidade grau III. Cuidado!';
         }
         if(valorIMC !== 'NaN'){
 
-            resultado.textContent = `${nome} seu IMC é ${valorIMC} e você está ${classificacao}`; 
+            resultado.innerHTML =  `<div class="resultado2"> ${nome} seu IMC é ${valorIMC} e você está ${classificacao}</div>`; 
         }
 }
 
