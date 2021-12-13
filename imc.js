@@ -7,7 +7,7 @@ function imc ()
     const peso = document.getElementById('peso').value;
 
     validacao(nome, altura, peso)
-    mascara()
+
     
 }
 
@@ -28,6 +28,7 @@ function mascara()
 {
     $(document).ready(function() {
         $("#altura").keyup(function(){
+                
             $('#altura').mask("0.00");
         });
     })
@@ -56,6 +57,8 @@ function calcular(nome, altura, peso)
             resultado.innerHTML = `<div class="resultado2"> ${nome} seu IMC é ${valorIMC} e você está ${classificacao}</div>`; 
         }
 }
+
+mascara()
 
 const calcula = document.getElementById('calcula');
 
