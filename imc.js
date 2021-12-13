@@ -7,22 +7,30 @@ function imc ()
     const peso = document.getElementById('peso').value;
 
     validacao(nome, altura, peso)
-    
+    mascara()
     
 }
 
 function validacao(nome,altura, peso)
 {
-    console.log(nome.length, altura.length, peso.length);
     if(nome.length  && altura.length  && peso.length) 
     { 
         calcular(nome,altura, peso)
+
     }else{
         
-        resultado.innerHTML =  `<div class="resultado2">Preencha todos os campos!</div> `;
+        resultado.innerHTML =  `<div class="resultado2">Preencha todos os campos!</div>`;
         return;
-    }
-    
+    }   
+}
+
+function mascara()
+{
+    $(document).ready(function() {
+        $("#altura").keyup(function(){
+            $('#altura').mask("0.00");
+        });
+    })
 }
 
 function calcular(nome, altura, peso)
@@ -45,10 +53,11 @@ function calcular(nome, altura, peso)
         }
         if(valorIMC !== 'NaN'){
 
-            resultado.innerHTML =  `<div class="resultado2"> ${nome} seu IMC é ${valorIMC} e você está ${classificacao}</div>`; 
+            resultado.innerHTML = `<div class="resultado2"> ${nome} seu IMC é ${valorIMC} e você está ${classificacao}</div>`; 
         }
 }
 
 const calcula = document.getElementById('calcula');
 
-calcula.addEventListener('click', imc); //evento de click
+calcula.addEventListener('click', imc);
+

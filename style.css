@@ -28,7 +28,7 @@ input{
 
 }
 
-input:focus-visible {
+input:focus-visible{
     outline: none;
     border-color: #483b92;
 }
@@ -55,7 +55,6 @@ button{
     -moz-transition: all 1s;  
     -o-transition: all 1s;  
      
-
 }
 
 button:hover{
